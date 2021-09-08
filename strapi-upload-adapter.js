@@ -133,8 +133,8 @@ class Adapter {
             : genericErrorText,
         )
       }
-
-      resolve(response[0].url ? { default: response[0].url } : null)
+      const uploadUrl = this.options.uploadUrl;
+      resolve(response[0].url ? { default: uploadUrl.slice(0, uploadUrl.lastIndexOf('/upload')) + response[0].url } : null)
     })
 
     // Upload progress when it is supported.
